@@ -1,13 +1,20 @@
 import React from "react"
+import styled from "styled-components"
 
+const StylesP = styled.p`
+${props => props.completed ? `}
+text-decoration: line-through;
+` : `
+text-decoration: none;
+`}
+`
 const Todo = props => {
     return (
 <div>
-<p>{props.listItems.task}</p>
-<p>{props.listItems.id}</p>
-<p>{props.listItems.completed}</p>
+<StylesP onClick={props.toggleCompleted, console.log(props.completed)}>{props.task}</StylesP>
+
 </div>
-    );
+    )
 }
 
 export default Todo;
