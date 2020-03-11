@@ -56,7 +56,7 @@ class App extends React.Component {
   };
 
   handleChanges = e => {
-    this.setState({ newItem: e.target.value, props.placeholder: "...todo" })
+    this.setState({ newItem: e.target.value, placeholder: "...todo" })
   };
 
   handleAddItem = e => {
