@@ -1,19 +1,26 @@
 import React from "react";
 
 const TodoForm = props => {
+    
+    
+    console.log('todo form props', props)
+    
     return (
         <div>
-            <form onSubmit={props.addItemEvent}>
-            <input 
-            type="text" 
-            placeholder="...todo" 
-            value={props.newItem} 
-            onChange={props.handleInputChange} />
-            {/*console.log("todo form props", props)*/}
-            <button >Add Item</button>
-            </form> 
+           <form 
+           onSubmit={props.handleAddItem}>
+        {/* This is an uncontrolled component 😬 We want it to be controlled by state */}
+        <input
+          type="text"
+          name="item"
+          placeholder={props.placeholder}
+          value={props.newItem}
+          onChange={props.handleChanges}
+        />
+        <button>Add</button>
+      </form>
         
-        <button>Remove Completed Items</button></div>
+        </div>
     
     )
 }

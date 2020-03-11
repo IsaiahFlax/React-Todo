@@ -2,18 +2,18 @@ import React from "react"
 import styled from "styled-components"
 
 const StylesP = styled.p`
-${props => props.completed ? `}
+${props => props.props.task.completed ? `
 text-decoration: line-through;
 ` : `
 text-decoration: none;
+${console.log("styled props", props.props.task.completed)}
 `}
 `
 const Todo = props => {
     return (
 <div 
-    onClick={props.toggleCompleted(props.task.id)}>
-<StylesP>{props.task.task}</StylesP>
-{console.log("TOdo.js props", props.task.task)}
+    onClick={e => props.toggleCompleted(props.task)}>
+<StylesP props={props}>{props.task.task}</StylesP>
 </div>
     )
     
