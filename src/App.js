@@ -12,25 +12,31 @@ class App extends React.Component {
         completed: false
       }],
       newItem: ""
-    }
+    };
+   this.toggleCompleted = this.toggleCompleted.bind(this)
   }
 
-  toggleCompleted = event => {
-    event.preventDefault();
-    console.log("toggleCompleted", this.listItems)
+  toggleCompleted = id => {
+    console.log("id ", id);
     this.setState({
-      listItems: [{
-        completed: true ? false : true
-        }]
-    })
-  }
+      completed: this.state.listItems.map(item => {
+        if (item.id === id) {
+          return {
+            ...item,
+            completed: !item.completed
+          };
+        }
+        return item;
+      })
+    });
+  };
 
   handleInputChange = event => {
    // console.log("handleInputChange event", this.state.newItem);
     this.setState({newItem: event.target.value});
   };
 
-    onClickEvent = event => {
+    addItemEvent = event => {
       event.preventDefault();
       //console.log("onClickEvent newItem", this.newItem)
       this.setState({
@@ -49,8 +55,8 @@ class App extends React.Component {
     return (
       <div>
         <h2>Welcome to your Todo App!</h2>
-        <TodoForm onClickEvent={this.onClickEvent} handleInputChange={this.handleInputChange} newItem={this.state.newItem} toggleCompleted={this.toggleCompleted}/>
-        <TodoList listItems={this.state.listItems} />
+        <TodoForm addItemEvent={this.addItemEvent} handleInputChange={this.handleInputChange} newItem={this.state.newItem} />
+        <TodoList listItems={this.state.listItems} toggleCompleted={this.toggleCompleted}/>
       </div>
     )
   }

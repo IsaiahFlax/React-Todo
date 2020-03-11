@@ -10,11 +10,13 @@ text-decoration: none;
 `
 const Todo = props => {
     return (
-<div>
-<StylesP onClick={props.toggleCompleted, console.log(props.completed)}>{props.task}</StylesP>
-
+<div 
+    onClick={props.toggleCompleted(props.task.id)}>
+<StylesP>{props.task.task}</StylesP>
+{console.log("TOdo.js props", props.task.task)}
 </div>
     )
+    
 }
 
 export default Todo;
