@@ -1,6 +1,8 @@
 import React from 'react';
 import TodoList from "./components/TodoList";
 import TodoForm from "./components/TodoForm";
+//import './components/Todo.css';
+
 
 class App extends React.Component {
   constructor(){
@@ -12,11 +14,28 @@ class App extends React.Component {
         completed: false
       }],
       newItem: "",
-      placeholder: "...todo"
+      placeholder: "...todo",
+      fieldActive: false
     };
-   
+    
+    this.activateField = this.activateField.bind(this);
+    this.disableFocus = this.disableFocus.bind(this);
   }
-  
+  activateField(){
+    this.setState({
+      fieldActive: false
+    })
+  }
+  disableFocus(e) {
+    if (e.target.value === "") {
+      this.setState({
+        fieldActive: false
+      })
+    }
+  }
+
+ 
+ 
   toggleCompleted = task => {
     console.log("id ", task.id, task.completed);
     this.setState({
@@ -56,12 +75,15 @@ class App extends React.Component {
   };
 
   handleChanges = e => {
-    this.setState({ newItem: e.target.value, placeholder: "...todo" })
+    this.setState({ newItem: e.target.value });
+    this.activateField(e);
+    e.preventDefault();
   };
 
   handleAddItem = e => {
     e.preventDefault();
     this.addItemEvent(this.state.newItem);
+    this.setState({newItem: ''})
   };
 
   render() {
@@ -74,7 +96,9 @@ class App extends React.Component {
         newItem={this.state.newItem} 
         handleChanges={this.handleChanges}
         handleAddItem={this.handleAddItem} 
-        placeholder={this.state.placeholder} />
+        placeholder={this.state.placeholder} 
+        activateField={this.activateField}
+        disableFocus={this.disableFocus} />
         <TodoList
          listItems={this.state.listItems}
          toggleCompleted={this.toggleCompleted} 
