@@ -1,11 +1,19 @@
  label {
   display: inline-block;
-  position: relative;;
+  position:absolute;
   left: 15px;
   top: 16px;
   transition: all 150ms ease-in;
   color: #676767;
  }
+ label {
+    display: inline-block;
+    position:relative;
+    left: 15px;
+    top: 16px;
+    transition: all 150ms ease-in;
+    color: pink;
+   }
 /* when the label is activated, it jumps up (using translateY) */
         /* you could add animation here as well */
  label.field-active {

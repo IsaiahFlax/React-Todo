@@ -1,9 +1,8 @@
 import React from 'react';
 import TodoList from "./components/TodoList";
 import TodoForm from "./components/TodoForm";
-//import './components/Todo.css';
-
-
+import './components/Todo.css';
+import { store } from 'store';
 class App extends React.Component {
   constructor(){
     super();
@@ -60,6 +59,7 @@ class App extends React.Component {
           completed: false
           }, ...this.state.listItems]
       })
+
     }
 
   // you will need a place to store your state in this component.
@@ -79,10 +79,19 @@ class App extends React.Component {
     this.activateField(e);
     e.preventDefault();
   };
+  // componentDidMount() {
+  //   const todoItem = localStorage.getItem(listItems)
+  //   this.setState({ id, listItems})
+  // }
+
+  // componentDidUpdate() {
+
+  // }
 
   handleAddItem = e => {
     e.preventDefault();
     this.addItemEvent(this.state.newItem);
+    localStorage.setItem(this.id, this.task)
     this.setState({newItem: ''})
   };
 

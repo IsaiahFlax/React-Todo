@@ -10,7 +10,7 @@ const TodoForm = props => {
            <form 
            onSubmit={props.handleAddItem}>
              <div className="field-group">
-               {//<label className={props.fieldActive ? "field-active" : ""}>...todo</label>}
+               {//<label className={props.fieldActive ? "field-active" : ""}>...todo</label>
 }
         {/* This is an uncontrolled component 😬 We want it to be controlled by state */}
         <input
