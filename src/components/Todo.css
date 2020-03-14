@@ -25,3 +25,9 @@
 .floating-label {
   -webkit-appearance: none !important;
  }
+ .everything {
+    text-align: center;
+ }
+ .todoform {
+    text-align: center;
+ }

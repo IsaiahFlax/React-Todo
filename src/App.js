@@ -2,7 +2,7 @@ import React from 'react';
 import TodoList from "./components/TodoList";
 import TodoForm from "./components/TodoForm";
 import './components/Todo.css';
-import { store } from 'store';
+//import { store } from 'store';
 class App extends React.Component {
   constructor(){
     super();
@@ -98,9 +98,10 @@ class App extends React.Component {
   render() {
     return (
       
-      <div>
+      <div className="everything">
         <h2>Welcome to your Todo App!</h2>
-        <TodoForm 
+        <TodoForm
+        className="todoform" 
         addItemEvent={this.addItemEvent} 
         newItem={this.state.newItem} 
         handleChanges={this.handleChanges}
