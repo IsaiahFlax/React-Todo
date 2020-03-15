@@ -20,6 +20,13 @@ class App extends React.Component {
     this.activateField = this.activateField.bind(this);
     this.disableFocus = this.disableFocus.bind(this);
   }
+
+  componentWillMount(){
+    store.get('list') && this.setState({
+      listItems: (store.get('list'))
+    })
+  }
+
   activateField(){
     this.setState({
       fieldActive: false
