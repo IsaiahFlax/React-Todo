@@ -2,7 +2,7 @@ import React from 'react';
 import TodoList from "./components/TodoList";
 import TodoForm from "./components/TodoForm";
 import './components/Todo.css';
-//import { store } from 'store';
+import store from 'store';
 class App extends React.Component {
   constructor(){
     super();
@@ -59,7 +59,7 @@ class App extends React.Component {
           completed: false
           }, ...this.state.listItems]
       })
-
+      this.state.listItems ? console.log('addItemEvent', this.state.listItems) : console.log('no listItem')
     }
 
   // you will need a place to store your state in this component.
@@ -78,6 +78,7 @@ class App extends React.Component {
     this.setState({ newItem: e.target.value });
     this.activateField(e);
     e.preventDefault();
+    
   };
   // componentDidMount() {
   //   const todoItem = localStorage.getItem(listItems)
@@ -91,10 +92,14 @@ class App extends React.Component {
   handleAddItem = e => {
     e.preventDefault();
     this.addItemEvent(this.state.newItem);
-    localStorage.setItem(this.id, this.task)
+   // const storeObject = this.state.newItem;
+    //store.set(this.state.newItem.id, storeObject);
     this.setState({newItem: ''})
+    console.log("handleAddItem", this.state.listItems)
   };
-
+componentWillUpdate(nextProps, nextState) {
+  store.set('list', nextState.listItems)
+}
   render() {
     return (
       
